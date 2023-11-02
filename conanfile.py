@@ -19,7 +19,7 @@ class KnowhereConan(ConanFile):
     homepage = "https://github.com/milvus-io/knowhere"
     license = "Apache-2.0"
 
-    generators = {"pkg_config","cmake_find_package"}
+    generators = {"pkg_config"}
 
     settings = "os", "arch", "compiler", "build_type"
     options = {
@@ -157,6 +157,7 @@ class KnowhereConan(ConanFile):
         tc.variables["WITH_BENCHMARK"] = self.options.with_benchmark
         tc.variables["WITH_COVERAGE"] = self.options.with_coverage
         tc.generate()
+
         deps = CMakeDeps(self)
         deps.generate()
 
